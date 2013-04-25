@@ -14,7 +14,7 @@ if (!current_user_can('manage_options'))  {
 
 
 	echo '<div class="wrap">';
-	echo '<h2><a href="'.DSS_AUTHOR_URI.'" target="_blank">' . __( 'Display SQL Stats', 'dss' ) .'</a></h2>'."\n";
+	echo '<h2><a href="'.DSS_AUTHOR_URI.'" target="_blank">'.DSS_PLUGIN_NAME.' '.DSS_CURRENT_VERSION.' ('.DSS_CURRENT_BUILD.')</a></h2>'."\n";
     //settings_errors();
  
  	print '<form method="post" action="options.php" id="dss_form">';
@@ -35,6 +35,10 @@ if (!current_user_can('manage_options'))  {
 		<textarea type="text" name="dss_sql_string" cols="100" rows="3">'.get_option("dss_sql_string", DSS_SQL_DEFAULT).'</textarea>
 		<br />
 		<input type="checkbox" name="dss_debug" value="1" '.dss_checked("dss_debug", "1").'/> '.__('Show debug information in dashboard', 'dss').'		
+		<p></p>
+		'.__('Notepad', 'dss').'
+		<br />
+		<textarea type="text" name="dss_notepad" cols="100" rows="10">'.get_option("dss_notepad", DSS_NOTEPAD_DEFAULT).'</textarea>
 		</td>
 		</tr>
 		</table>

@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Display SQL Stats\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-04-16 18:04+0100\n"
-"PO-Revision-Date: 2013-04-16 18:04+0100\n"
+"POT-Creation-Date: 2013-04-25 14:49+0100\n"
+"PO-Revision-Date: 2013-04-25 14:52+0100\n"
 "Last-Translator: Juergen Schulze <1manfactory@gmail.com>\n"
 "Language-Team: Juergen Schulze <1manfactory@gmail.com>\n"
 "Language: de_DE\n"
@@ -11,42 +11,46 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "X-Poedit-KeywordsList: _e;gettext;gettext_noop;__\n"
-"X-Poedit-Basepath: .\n"
+"X-Poedit-Basepath: .\\\n"
 "X-Generator: Poedit 1.5.4\n"
-"X-Poedit-SearchPath-0: c:\\temp\\UniServer\\www\\blog\\wp-content\\plugins"
-"\\display-sql-stats\n"
 
-#: c:\temp\UniServer\www\blog\wp-content\plugins\display-sql-stats/display-stats-admin.php:4
-#: c:\temp\UniServer\www\blog\wp-content\plugins\display-sql-stats/display-stats-chart.php:4
+#: c:\temp\UniServer\www\null-papier.de\wp-content\plugins\display-sql-stats/display-stats-admin.php:4
+#: c:\temp\UniServer\www\null-papier.de\wp-content\plugins\display-sql-stats/display-stats-chart.php:4
 msgid "You do not have sufficient permissions to access this page."
 msgstr "Sie haben nicht ausreichend Rechte, um auf diese Seite zuzugreifen."
 
-#: c:\temp\UniServer\www\blog\wp-content\plugins\display-sql-stats/display-stats-admin.php:17
-#: c:\temp\UniServer\www\blog\wp-content\plugins\display-sql-stats/display-stats.php:77
-#: c:\temp\UniServer\www\blog\wp-content\plugins\display-sql-stats/display-stats.php:119
-msgid "Display Stats"
-msgstr "Display Stats"
-
-#: c:\temp\UniServer\www\blog\wp-content\plugins\display-sql-stats/display-stats-admin.php:29
+#: c:\temp\UniServer\www\null-papier.de\wp-content\plugins\display-sql-stats/display-stats-admin.php:29
 msgid "Enter your SQL statement and give it a title."
 msgstr "SQL Statement eingeben und mit Titel versehen."
 
-#: c:\temp\UniServer\www\blog\wp-content\plugins\display-sql-stats/display-stats-admin.php:33
+#: c:\temp\UniServer\www\null-papier.de\wp-content\plugins\display-sql-stats/display-stats-admin.php:33
 msgid "Title: "
 msgstr "Titel:"
 
-#: c:\temp\UniServer\www\blog\wp-content\plugins\display-sql-stats/display-stats-admin.php:37
+#: c:\temp\UniServer\www\null-papier.de\wp-content\plugins\display-sql-stats/display-stats-admin.php:37
 msgid "Show debug information in dashboard"
 msgstr "Debug Information in Dahsboard anzeigen"
 
-#: c:\temp\UniServer\www\blog\wp-content\plugins\display-sql-stats/display-stats-admin.php:46
+#: c:\temp\UniServer\www\null-papier.de\wp-content\plugins\display-sql-stats/display-stats-admin.php:39
+msgid "Notepad"
+msgstr "Notizblock"
+
+#: c:\temp\UniServer\www\null-papier.de\wp-content\plugins\display-sql-stats/display-stats-admin.php:50
 msgid "Save Changes"
 msgstr "Änderungen speichern"
 
-#: c:\temp\UniServer\www\blog\wp-content\plugins\display-sql-stats/display-stats-getdata.php:9
+#: c:\temp\UniServer\www\null-papier.de\wp-content\plugins\display-sql-stats/display-stats-getdata.php:9
 msgid "No result"
 msgstr "Kein Ergebnis"
 
-#: c:\temp\UniServer\www\blog\wp-content\plugins\display-sql-stats/display-stats.php:93
+#: c:\temp\UniServer\www\null-papier.de\wp-content\plugins\display-sql-stats/display-stats.php:37
+#: c:\temp\UniServer\www\null-papier.de\wp-content\plugins\display-sql-stats/display-stats.php:38
+msgid "Store whatever information you like."
+msgstr "Speichern Sie ihre Informationen hier."
+
+#: c:\temp\UniServer\www\null-papier.de\wp-content\plugins\display-sql-stats/display-stats.php:96
 msgid "SQL Error: "
 msgstr "SQL Fehler:"
+
+#~ msgid "Display SQL Stats"
+#~ msgstr "Display SQL Stats"

@@ -3,7 +3,7 @@
 Plugin Name: Display SQL Stats
 Plugin URI: http://wordpress.org/extend/plugins/display-stats/
 Description: Displaying SQL result data as graphical chart on the dashboard with use of Google Chart Tools.
-Version: 0.1
+Version: 0.2
 Author: Juergen Schulze
 Author URI: http://1manfactory.com/ds
 License: GNU GP
@@ -28,19 +28,19 @@ License: GNU GP
 
 
 // Version/Build of the plugin and some default values
-define( 'DSS_CURRENT_VERSION', '0.1' );
-define( 'DSS_CURRENT_BUILD', '1' );
-define( 'DSS_AUTHOR_URI', 'http://1manfactory.com/ds' );
+define( 'DSS_PLUGIN_NAME', 'Display SQL Stats' );
+define( 'DSS_CURRENT_VERSION', '0.2' );
+define( 'DSS_CURRENT_BUILD', '2' );
+define( 'DSS_AUTHOR_URI', 'http://1manfactory.com/dss' );
 define( 'DSS_SQL_DEFAULT', 'SELECT DATE_FORMAT (comment_date, "%Y-%m-%d") AS Date, COUNT(*) AS Count FROM wp_comments  GROUP BY Date ORDER BY Date ASC' );
 define( 'DSS_TITLE_DEFAULT', 'Comments' );
+define( 'DSS_NOTEPAD_DEFAULT', __('Store whatever information you like.', 'dss') );
 
 
 dss_set_lang_file();
 add_action('admin_menu', 'dss_admin_actions');
 add_action('admin_init', 'dss_init');
 add_action('admin_head', 'dss_insert_header');
-//add_action('wp_head', 'dss_insert_header');
-
 
 
 
@@ -49,6 +49,7 @@ function dss_init() {
 	register_setting( 'dss_option-group', 'dss_sql_string', 'dss_check_sql' );
 	register_setting( 'dss_option-group', 'dss_title');
 	register_setting( 'dss_option-group', 'dss_options_array');
+	register_setting( 'dss_option-group', 'dss_notepad');
 	register_setting( 'dss_option-group', 'dss_debug');
 }
 	
@@ -69,12 +70,13 @@ function dss_uninstall() {
 	delete_option('dss_title');
 	delete_option('dss_options_array');
 	delete_option('dss_debug');
+	delete_option('dss_notepad');
 }
 
 
 function dss_admin_actions() { 
 	if (current_user_can('manage_options'))  {
-		add_options_page(__( 'Display SQL Stats', 'dss' ), "Display SQL Stats", 'manage_options', "display-stats", "dss_show_admin");
+		add_options_page(DSS_PLUGIN_NAME, DSS_PLUGIN_NAME, 'manage_options', "display-stats", "dss_show_admin");
 	}
 } 
 
@@ -115,7 +117,7 @@ function dss_dashboard_insert() {
  * Dashboard Widget hinzufügen
  */
 function dss_dashboard_setup() {
-	wp_add_dashboard_widget( 'dss_dashboard_insert', __( 'Display SQL Stats' ), 'dss_dashboard_insert' );
+	wp_add_dashboard_widget( 'dss_dashboard_insert', DSS_PLUGIN_NAME, 'dss_dashboard_insert' );
 }
 
 /**
