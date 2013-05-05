@@ -7,7 +7,7 @@ Tested up to: 3.5.1
 Stable tag: 0.2
 
 == Description ==
-! ! !  S T I L L   B E T A  ! ! ! 
+! ! !  S T I L L   B E T A  ! ! !
 
 Displaying SQL result data as graphical chart on the dashboard with use of Google Chart Tools.
 
