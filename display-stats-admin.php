@@ -23,16 +23,16 @@ if (!current_user_can('manage_options'))  {
  
   
 	print'
-		<input type="hidden" name="page_options" value="dss_sql_string, dss_options_array, dss_debug, dss_title" />
+		<input type="hidden" name="page_options" value="dss_sql_string1, dss_options_array, dss_debug, dss_title1" />
 		<table class="form-table">
 		<tr valign="top">
 		<th scope="row">'.__('Enter your SQL statement and give it a title.', 'dss').'</th>
 		</tr>
 		<tr>
 		<td>
-		'.__('Title: ', 'dss').'<input type="text" name="dss_title" value="'.get_option("dss_title", DSS_TITLE_DEFAULT).'" size="50">
+		'.__('Title: ', 'dss').'<input type="text" name="dss_title1" value="'.get_option("dss_title1", DSS_TITLE_DEFAULT).'" size="50">
 		<br />
-		<textarea type="text" name="dss_sql_string" cols="100" rows="3">'.get_option("dss_sql_string", DSS_SQL_DEFAULT).'</textarea>
+		<textarea type="text" name="dss_sql_string1" cols="100" rows="3">'.get_option("dss_sql_string1", DSS_SQL_DEFAULT).'</textarea>
 		<br />
 		<input type="checkbox" name="dss_debug" value="1" '.dss_checked("dss_debug", "1").'/> '.__('Show debug information in dashboard', 'dss').'		
 		<p></p>

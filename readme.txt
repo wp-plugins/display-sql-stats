@@ -3,11 +3,11 @@ Contributors: Juergen Schulze
 Donate link: http://1manfactory.com/donate
 Tags: google chart, google chart tools, mysql, chart, charts, stats, statistic, statistics, graphic, graphical, dashboard, admin, sql, table, data, data mining, data display, data visualization, 
 Requires at least: 2.7
-Tested up to: 3.5.1
-Stable tag: 0.2
+Tested up to: 3.6
+Stable tag: 0.3
 
 == Description ==
-! ! !  S T I L L   B E T A  ! ! !
+! ! !  S T I L L   B E T A  ! ! ! 
 
 Displaying SQL result data as graphical chart on the dashboard with use of Google Chart Tools.
 
@@ -25,6 +25,10 @@ Displaying SQL result data as graphical chart on the dashboard with use of Googl
 It's best to use the build in delete function of wordpress. That way all the stored data will be removed and no orphaned data will stay.
 
 == Changelog ==
+
+= 0.3 (2013/08/17) =
+* Tested with WP 3.6
+* New default demo SQL to demonstrate how to insert additional columns
 
 = 0.2 (2013/04/25) =
 * NEW: Notepad function to store different SQL statement, ideas or whatever

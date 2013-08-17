@@ -5,7 +5,7 @@ if (!current_user_can('manage_options'))  {
 }
 
 if (get_option("dss_debug")) {
-	print get_option("dss_sql_string", DSS_SQL_DEFAULT)."<br /><p>\n";
+	print get_option("dss_sql_string1", DSS_SQL_DEFAULT)."<br /><p>\n";
 	include('display-stats-getdata.php');
 }
 ?>

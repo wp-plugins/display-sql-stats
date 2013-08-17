@@ -1,7 +1,7 @@
 <?php
 global $wpdb;
 // get SQL statement to be used
-$dss_sql=get_option("dss_sql_string", DSS_SQL_DEFAULT);
+$dss_sql=get_option("dss_sql_string1", DSS_SQL_DEFAULT);
 
 
 $result = $wpdb->get_results($dss_sql, ARRAY_A);

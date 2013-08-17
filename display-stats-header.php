@@ -23,7 +23,7 @@
 ]);
 
 	// Set chart options
-	var options = {'title':'<?php print get_option("dss_title", DSS_TITLE_DEFAULT); ?>',
+	var options = {'title':'<?php print get_option("dss_title1", DSS_TITLE_DEFAULT); ?>',
 		'is3D':true,
 		'width':400,
 		'height':300};
