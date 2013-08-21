@@ -14,26 +14,17 @@
   // draws it.
   function drawChart() {
 
-	// Create the data table.
-	var data = google.visualization.arrayToDataTable([
+	
 <?php
 	//get data as matrix
 	include('display-stats-getdata.php');
-?>	
-]);
-
-	// Set chart options
-	var options = {'title':'<?php print get_option("dss_title1", DSS_TITLE_DEFAULT); ?>',
-		'is3D':true,
-		'width':400,
-		'height':300};
-
-	// Instantiate and draw our chart, passing in some options.
-	//var chart = new google.visualization.PieChart(document.getElementById('chart_div'));
-	//var chart = new google.visualization.BarChart(document.getElementById('chart_div'));
-	var chart = new google.visualization.LineChart(document.getElementById('chart_div'));
 	
-	chart.draw(data, options);
+	// set chart options
+	include('display-stats-set_chart.php');
+	
+?>	
+
+
   }
 </script>
 <!-- inserted by Wordpress plugin Display SQL Stats end-->
