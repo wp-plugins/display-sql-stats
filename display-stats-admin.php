@@ -4,7 +4,7 @@ if (!current_user_can('manage_options'))  {
 	wp_die( __('You do not have sufficient permissions to access this page.') );
 }
 
-
+global $chart_types_array;
 
 /**
  * Display the plugin settings options page
@@ -20,11 +20,12 @@ if (!current_user_can('manage_options'))  {
 	settings_fields( 'dss_option-group');
  
 	$dss_title_array=get_option("dss_title_array");
+	$dss_type_array=get_option("dss_type_array");
 	$dss_sql_string_array=get_option("dss_sql_string_array");
 	$dss_number_of_sql_statements=get_option("dss_number_of_sql_statements", DSS_NUMBER_OF_SQL_STATEMENTS_DEFAULT);
-	
+
 	print'
-		<input type="hidden" name="page_options" value="dss_sql_string_array, dss_options_array, dss_debug, dss_title_array" />
+		<input type="hidden" name="page_options" value="dss_sql_string_array, dss_type_array, dss_debug, dss_title_array" />
 		<table class="form-table">
 		<tr valign="top">
 		<th scope="row">'.__('Enter your SQL statement(s) and give it/them a title.', 'dss').'</th>
@@ -36,7 +37,26 @@ if (!current_user_can('manage_options'))  {
 	for ($i=0;$i<$dss_number_of_sql_statements;$i++) {
 		print __('Title: ', 'dss').'<input type="text" name="dss_title_array['.$i.']" value="'.$dss_title_array[$i].'" size="50">
 			<br />
-			<textarea type="text" name="dss_sql_string_array['.$i.']" cols="100" rows="3">'.$dss_sql_string_array[$i].'</textarea>
+			<table border="0"><tr>
+			<td><textarea type="text" name="dss_sql_string_array['.$i.']" cols="100" rows="5">'.$dss_sql_string_array[$i].'</textarea></td>
+			<td width="10"></td>
+			<td valign="top">
+ 
+  <select name="dss_type_array['.$i.']">'."\n";
+ 
+			foreach ($chart_types_array as $chart_type_key=>$chart_type_value) {
+				print '<option value="'.$chart_type_key.'"';
+				if ($dss_type_array[$i]==$chart_type_key) print " selected";
+				print '>'.$chart_type_value.'</option>'."\n";
+			}
+ 
+      
+  print '</select>
+  
+			</td>
+			</tr>
+			</table>
+			
 			<br />
 			<br />
 		';

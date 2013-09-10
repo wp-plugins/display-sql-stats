@@ -3,7 +3,7 @@
 Plugin Name: Display SQL Stats
 Plugin URI: http://wordpress.org/extend/plugins/display-stats/
 Description: Displaying SQL result data as graphical chart on the dashboard with use of Google Chart Tools.
-Version: 0.4
+Version: 0.5
 Author: Juergen Schulze
 Author URI: http://1manfactory.com/ds
 License: GNU GP
@@ -29,14 +29,15 @@ License: GNU GP
 
 // Version/Build of the plugin and some default values
 define( 'DSS_PLUGIN_NAME', 'Display SQL Stats' );
-define( 'DSS_CURRENT_VERSION', '0.4' );
-define( 'DSS_CURRENT_BUILD', '4' );
+define( 'DSS_CURRENT_VERSION', '0.5' );
+define( 'DSS_CURRENT_BUILD', '5' );
 define( 'DSS_AUTHOR_URI', 'http://1manfactory.com/dss' );
 define( 'DSS_SQL_DEFAULT', 'SELECT DATE_FORMAT (comment_date, "%Y-%m-%d") AS Date, COUNT(*) AS Count, 3 AS Target FROM wp_comments  GROUP BY Date ORDER BY Date ASC' );
 define( 'DSS_NUMBER_OF_SQL_STATEMENTS_DEFAULT', '1' );
 define( 'DSS_TITLE_DEFAULT', 'Comments' );
 define( 'DSS_NOTEPAD_DEFAULT', __("Store whatever information you like here.\nOr try this statement:\nSELECT DATE_FORMAT (comment_date, \"%Y-%m-%d\") AS Date, COUNT(*) AS Count, 3 AS Target FROM wp_comments  GROUP BY Date ORDER BY Date ASC", 'dss') );
 
+$chart_types_array=array("LineChart", "PieChart", "ScatterChart", "Table", "BubbleChart");
 
 dss_set_lang_file();
 add_action('admin_menu', 'dss_admin_actions');
@@ -49,7 +50,7 @@ function dss_init() {
 	register_setting( 'dss_option-group', 'dss_number_of_sql_statements');
 	register_setting( 'dss_option-group', 'dss_sql_string_array', 'dss_check_sql' );
 	register_setting( 'dss_option-group', 'dss_title_array');
-	register_setting( 'dss_option-group', 'dss_options_array');
+	register_setting( 'dss_option-group', 'dss_type_array');
 	register_setting( 'dss_option-group', 'dss_notepad');
 	register_setting( 'dss_option-group', 'dss_debug');
 }
@@ -70,7 +71,7 @@ function dss_uninstall() {
 	delete_option('dss_number_of_sql_statements');
 	delete_option('dss_sql_string_array');
 	delete_option('dss_title_array');
-	delete_option('dss_options_array');
+	delete_option('dss_type_array');
 	delete_option('dss_notepad');
 	delete_option('dss_debug');
 }

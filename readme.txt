@@ -4,7 +4,7 @@ Donate link: http://1manfactory.com/donate
 Tags: google chart, google chart tools, mysql, chart, charts, stats, statistic, statistics, graphic, graphical, dashboard, admin, sql, table, data, data mining, data display, data visualization, 
 Requires at least: 2.7
 Tested up to: 3.6
-Stable tag: 0.4
+Stable tag: 0.5
 
 == Description ==
 ! ! !  S T I L L   B E T A  ! ! ! 
@@ -25,6 +25,9 @@ Displaying SQL result data as graphical chart on the dashboard with use of Googl
 It's best to use the build in delete function of wordpress. That way all the stored data will be removed and no orphaned data will stay.
 
 == Changelog ==
+
+= 0.5 (2013/09/10) =
+* Use different chart types (Pie Chart, Scatter Chart, Table, Bubble Chart)
 
 = 0.4 (2013/08/21) =
 * Use multiple SQL statments and charts
