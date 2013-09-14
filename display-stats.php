@@ -3,7 +3,7 @@
 Plugin Name: Display SQL Stats
 Plugin URI: http://wordpress.org/extend/plugins/display-stats/
 Description: Displaying SQL result data as graphical chart on the dashboard with use of Google Chart Tools.
-Version: 0.5
+Version: 0.6.1
 Author: Juergen Schulze
 Author URI: http://1manfactory.com/ds
 License: GNU GP
@@ -29,8 +29,8 @@ License: GNU GP
 
 // Version/Build of the plugin and some default values
 define( 'DSS_PLUGIN_NAME', 'Display SQL Stats' );
-define( 'DSS_CURRENT_VERSION', '0.5' );
-define( 'DSS_CURRENT_BUILD', '5' );
+define( 'DSS_CURRENT_VERSION', '0.6.1' );
+define( 'DSS_CURRENT_BUILD', '7' );
 define( 'DSS_AUTHOR_URI', 'http://1manfactory.com/dss' );
 define( 'DSS_SQL_DEFAULT', 'SELECT DATE_FORMAT (comment_date, "%Y-%m-%d") AS Date, COUNT(*) AS Count, 3 AS Target FROM wp_comments  GROUP BY Date ORDER BY Date ASC' );
 define( 'DSS_NUMBER_OF_SQL_STATEMENTS_DEFAULT', '1' );
@@ -143,7 +143,8 @@ function dss_quote_the_strings(&$item, $key ) {
 	if (dss_validateDate($item)) {
 		// $item=yyyy-mm-dd
 		$item_array=getdate(strtotime($item));
-		$item="new Date(".$item_array["year"].", ".$item_array["mon"].", ".$item_array["mday"].")";
+		$javascriptmonth=$item_array["mon"]-1; // javascript starts counting month on 0
+		$item="new Date(".$item_array["year"].", ".$javascriptmonth.", ".$item_array["mday"].")";
 	} else {
 		if (!is_numeric($item)) {
 			// quote value if not numeric
