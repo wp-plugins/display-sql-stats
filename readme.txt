@@ -3,7 +3,7 @@ Contributors: Juergen Schulze
 Donate link: http://1manfactory.com/donate
 Tags: google chart, google chart tools, mysql, chart, charts, stats, statistic, statistics, graphic, graphical, dashboard, admin, sql, table, data, data mining, data display, data visualization, 
 Requires at least: 2.7
-Tested up to: 3.6
+Tested up to: 3.6.1
 Stable tag: 0.5
 
 == Description ==
@@ -26,8 +26,13 @@ It's best to use the build in delete function of wordpress. That way all the sto
 
 == Changelog ==
 
+= 0.6 (2013/09/14) =
+* Check on Wordpress 3.6.1
+* New chart types: Bar Chart
+* auto detecting of column types: date, number, string
+
 = 0.5 (2013/09/10) =
-* Use different chart types (Pie Chart, Scatter Chart, Table, Bubble Chart)
+* Use different chart types (Pie Chart, Scatter Chart, Bubble Chart)
 
 = 0.4 (2013/08/21) =
 * Use multiple SQL statments and charts
@@ -43,6 +48,10 @@ It's best to use the build in delete function of wordpress. That way all the sto
 * first test version
 
 == Frequently Asked Questions ==
+
+= Where can I find more information on Google Charts? =
+
+[Google Charts](https://developers.google.com/chart/)
 
 = How can I support you? =
 

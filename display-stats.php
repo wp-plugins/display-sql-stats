@@ -37,7 +37,7 @@ define( 'DSS_NUMBER_OF_SQL_STATEMENTS_DEFAULT', '1' );
 define( 'DSS_TITLE_DEFAULT', 'Comments' );
 define( 'DSS_NOTEPAD_DEFAULT', __("Store whatever information you like here.\nOr try this statement:\nSELECT DATE_FORMAT (comment_date, \"%Y-%m-%d\") AS Date, COUNT(*) AS Count, 3 AS Target FROM wp_comments  GROUP BY Date ORDER BY Date ASC", 'dss') );
 
-$chart_types_array=array("LineChart", "PieChart", "ScatterChart", "Table", "BubbleChart");
+$chart_types_array=array("LineChart", "PieChart", "ScatterChart", "BubbleChart", "BarChart");
 
 dss_set_lang_file();
 add_action('admin_menu', 'dss_admin_actions');
@@ -140,10 +140,33 @@ function dss_insert_header() {
 }
 
 function dss_quote_the_strings(&$item, $key ) {
-	if (!is_numeric($item)) {
-		// quote value if not numeric
-		$item="'".$item."'";
+	if (dss_validateDate($item)) {
+		// $item=yyyy-mm-dd
+		$item_array=getdate(strtotime($item));
+		$item="new Date(".$item_array["year"].", ".$item_array["mon"].", ".$item_array["mday"].")";
+	} else {
+		if (!is_numeric($item)) {
+			// quote value if not numeric
+			$item="'".$item."'";
+		}
 	}
+	
 }
 
+function dss_validateDate($date, $format = 'Y-m-d') {
+     $d = DateTime::createFromFormat($format, $date);
+     return $d && $d->format($format) == $date;
+}
+
+function dss_get_type ($value, $defaulttype="number") {
+	if (dss_validateDate($value)) {
+		return "date";
+	} else {
+		if (!is_numeric($value)) {
+			return "string";
+		} else {
+			return $defaulttype;
+		}
+	}	
+}
 ?>

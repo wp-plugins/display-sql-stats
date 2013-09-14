@@ -8,8 +8,9 @@ $dss_sql_string_array=get_option("dss_sql_string_array");
 
 if (get_option("dss_debug")) {
 	foreach ($dss_sql_string_array as $single_statement) {
-		print $single_statement."<br /><p>\n";
+		print "\n".$single_statement."<br /><br />\n";
 		include('display-stats-getdata.php');
+		print "\n<br /><p>";
 	}
 }
 
