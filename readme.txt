@@ -66,7 +66,7 @@ Post a comment on [Display SQL Stats](http://1manfactory.com/dss)
 
 = Do you have other plugins?  =
 
-Check out my other [Wordpress Plugins](http://wordpress.org/extend/plugins/profile/1manfactory)
+Check out my other [Wordpress Plugins](http://profiles.wordpress.org/1manfactory)
 
 = Where do I post my feedback? =
 
