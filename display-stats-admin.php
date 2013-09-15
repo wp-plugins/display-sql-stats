@@ -21,11 +21,13 @@ global $chart_types_array;
  
 	$dss_title_array=get_option("dss_title_array");
 	$dss_type_array=get_option("dss_type_array");
+	$dss_switch_array=get_option("dss_switch_array");
 	$dss_sql_string_array=get_option("dss_sql_string_array");
+	$dss_debug=get_option("dss_debug");
 	$dss_number_of_sql_statements=get_option("dss_number_of_sql_statements", DSS_NUMBER_OF_SQL_STATEMENTS_DEFAULT);
 
 	print'
-		<input type="hidden" name="page_options" value="dss_sql_string_array, dss_type_array, dss_debug, dss_title_array" />
+		<input type="hidden" name="page_options" value="dss_sql_string_array, dss_type_array, dss_switch_array, dss_debug, dss_title_array" />
 		<table class="form-table">
 		<tr valign="top">
 		<th scope="row">'.__('Enter your SQL statement(s) and give it/them a title.', 'dss').'</th>
@@ -52,7 +54,12 @@ global $chart_types_array;
  
       
   print '</select>
-  
+		<br /><p>';
+		
+		if ($dss_switch_array[$i]=="") $dss_switch_array[$i]="on";
+		print '
+		<input type="radio" name="dss_switch_array['.$i.']" value="on"'.dss_checked($dss_switch_array[$i], "on").'> '.__('On', 'dss').'&nbsp;&nbsp;
+		<input type="radio" name="dss_switch_array['.$i.']" value="off"'.dss_checked($dss_switch_array[$i], "off").'> '.__('Off', 'dss').'
 			</td>
 			</tr>
 			</table>
@@ -62,7 +69,7 @@ global $chart_types_array;
 		';
 	}
 	
-	print'<input type="checkbox" name="dss_debug" value="1" '.dss_checked("dss_debug", "1").'/> '.__('Show debug information in dashboard', 'dss').'		
+	print'<input type="checkbox" name="dss_debug" value="1" '.dss_checked($dss_debug, "1").'/> '.__('Show debug information in dashboard', 'dss').'		
 		<br />
 		'.__('Number of SQL Statements: ', 'dss').'<input type="text" name="dss_number_of_sql_statements" value="'.$dss_number_of_sql_statements.'" size="4">
 		<p></p>

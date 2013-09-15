@@ -3,7 +3,7 @@
 Plugin Name: Display SQL Stats
 Plugin URI: http://wordpress.org/plugins/display-sql-stats/
 Description: Displaying SQL result data as graphical chart on the dashboard with use of Google Chart Tools.
-Version: 0.6.1
+Version: 0.6.2
 Author: Juergen Schulze
 Author URI: http://1manfactory.com/dss
 License: GNU GP
@@ -29,8 +29,8 @@ License: GNU GP
 
 // Version/Build of the plugin and some default values
 define( 'DSS_PLUGIN_NAME', 'Display SQL Stats' );
-define( 'DSS_CURRENT_VERSION', '0.6.1' );
-define( 'DSS_CURRENT_BUILD', '7' );
+define( 'DSS_CURRENT_VERSION', '0.6.2' );
+define( 'DSS_CURRENT_BUILD', '8' );
 define( 'DSS_AUTHOR_URI', 'http://1manfactory.com/dss' );
 define( 'DSS_SQL_DEFAULT', 'SELECT DATE_FORMAT (comment_date, "%Y-%m-%d") AS Date, COUNT(*) AS Count, 3 AS Target FROM wp_comments  GROUP BY Date ORDER BY Date ASC' );
 define( 'DSS_NUMBER_OF_SQL_STATEMENTS_DEFAULT', '1' );
@@ -49,6 +49,7 @@ add_action('admin_head', 'dss_insert_header');
 function dss_init() {
 	register_setting( 'dss_option-group', 'dss_number_of_sql_statements');
 	register_setting( 'dss_option-group', 'dss_sql_string_array', 'dss_check_sql' );
+	register_setting( 'dss_option-group', 'dss_switch_array');
 	register_setting( 'dss_option-group', 'dss_title_array');
 	register_setting( 'dss_option-group', 'dss_type_array');
 	register_setting( 'dss_option-group', 'dss_notepad');
@@ -70,6 +71,7 @@ function dss_uninstall() {
 	# delete all data stored by DS
 	delete_option('dss_number_of_sql_statements');
 	delete_option('dss_sql_string_array');
+	delete_option('dss_switch_array');
 	delete_option('dss_title_array');
 	delete_option('dss_type_array');
 	delete_option('dss_notepad');
@@ -132,7 +134,8 @@ add_action('wp_dashboard_setup', 'dss_dashboard_setup');
 
 
 function dss_checked($checkOption, $checkValue) {
-	return get_option($checkOption)==$checkValue ? " checked" : "";
+	//return get_option($checkOption)==$checkValue ? " checked" : "";
+	return $checkOption==$checkValue ? " checked" : "";
 }
 
 function dss_insert_header() {
