@@ -18,7 +18,12 @@ foreach ($dss_sql_string_array as $i=>$single_statement) {
 		} else {
 			print "\n".'var data'.$i.' = new google.visualization.DataTable();'."\n";
 			$comma_separated=array();
+			//$result=array(array(1,2,3),array(-4,4,4),array(3,15));
+			$minval = min( array_map("dss_realmin", $result) );
+			$maxval = max( array_map("dss_realmax", $result) );
+			//dss_log($maxval);
 			foreach ($result as $row) {
+			
 				//print_r($row);print "<br />\n";
 				array_walk($row, 'dss_quote_the_strings');
 				array_push($comma_separated, "[".implode(", ", $row)."]" );

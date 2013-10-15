@@ -3,7 +3,7 @@
 Plugin Name: Display SQL Stats
 Plugin URI: http://wordpress.org/plugins/display-sql-stats/
 Description: Displaying SQL result data as graphical chart on the dashboard with use of Google Chart Tools.
-Version: 0.6.2
+Version: 0.6.3
 Author: Juergen Schulze
 Author URI: http://1manfactory.com/dss
 License: GNU GP
@@ -29,8 +29,8 @@ License: GNU GP
 
 // Version/Build of the plugin and some default values
 define( 'DSS_PLUGIN_NAME', 'Display SQL Stats' );
-define( 'DSS_CURRENT_VERSION', '0.6.2' );
-define( 'DSS_CURRENT_BUILD', '8' );
+define( 'DSS_CURRENT_VERSION', '0.6.3' );
+define( 'DSS_CURRENT_BUILD', '9' );
 define( 'DSS_AUTHOR_URI', 'http://1manfactory.com/dss' );
 define( 'DSS_SQL_DEFAULT', 'SELECT DATE_FORMAT (comment_date, "%Y-%m-%d") AS Date, COUNT(*) AS Count, 3 AS Target FROM wp_comments  GROUP BY Date ORDER BY Date ASC' );
 define( 'DSS_NUMBER_OF_SQL_STATEMENTS_DEFAULT', '1' );
@@ -81,7 +81,7 @@ function dss_uninstall() {
 
 function dss_admin_actions() { 
 	if (current_user_can('manage_options'))  {
-		add_options_page(DSS_PLUGIN_NAME, DSS_PLUGIN_NAME, 'manage_options', "display-stats", "dss_show_admin");
+		add_options_page(DSS_PLUGIN_NAME, DSS_PLUGIN_NAME, 'manage_options', "dss_display-stats", "dss_show_admin");
 	}
 } 
 
@@ -133,6 +133,27 @@ function dss_dashboard_setup() {
 add_action('wp_dashboard_setup', 'dss_dashboard_setup');
 
 
+function dss_plugin_action_links($links, $file) {
+    static $this_plugin;
+
+    if (!$this_plugin) {
+        $this_plugin = plugin_basename(__FILE__);
+    }
+
+    if ($file == $this_plugin) {
+        // The "page" query string value must be equal to the slug
+        // of the Settings admin page we defined earlier, which in
+        // this case equals "myplugin-settings".
+        $settings_link = '<a href="' . get_bloginfo('wpurl') . '/wp-admin/admin.php?page=dss_display-stats">'.__('Settings').'</a>';
+        array_unshift($links, $settings_link);
+    }
+
+    return $links;
+}
+
+add_filter('plugin_action_links', 'dss_plugin_action_links', 10, 2);
+
+
 function dss_checked($checkOption, $checkValue) {
 	//return get_option($checkOption)==$checkValue ? " checked" : "";
 	return $checkOption==$checkValue ? " checked" : "";
@@ -172,5 +193,31 @@ function dss_get_type ($value, $defaulttype="number") {
 			return $defaulttype;
 		}
 	}	
+}
+
+function dss_realmin ($array) {
+	if (is_numeric($array[0])) $mem=$array[0]; else $mem=0;
+	foreach ($array as $val) {
+		if ($val<$mem && is_numeric($val)) $mem=$val;
+	}
+	return $mem;
+}
+
+function dss_realmax ($array) {
+	if (is_numeric($array[0])) $mem=$array[0];
+	foreach ($array as $val) {
+		if ($val>$mem && is_numeric($val)) $mem=$val;
+	}
+	return $mem;
+}
+
+function dss_log($message) {
+    if (WP_DEBUG === true) {
+        if (is_array($message) || is_object($message)) {
+            error_log(print_r($message, true));
+        } else {
+            error_log($message);
+        }
+    }
 }
 ?>
