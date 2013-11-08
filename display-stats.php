@@ -3,7 +3,7 @@
 Plugin Name: Display SQL Stats
 Plugin URI: http://wordpress.org/plugins/display-sql-stats/
 Description: Displaying SQL result data as graphical chart on the dashboard with use of Google Chart Tools.
-Version: 0.6.3.1
+Version: 0.6.4
 Author: Juergen Schulze
 Author URI: http://1manfactory.com/dss
 License: GNU GP
@@ -29,8 +29,8 @@ License: GNU GP
 
 // Version/Build of the plugin and some default values
 define( 'DSS_PLUGIN_NAME', 'Display SQL Stats' );
-define( 'DSS_CURRENT_VERSION', '0.6.3.1' );
-define( 'DSS_CURRENT_BUILD', '10' );
+define( 'DSS_CURRENT_VERSION', '0.6.4' );
+define( 'DSS_CURRENT_BUILD', '11' );
 define( 'DSS_AUTHOR_URI', 'http://1manfactory.com/dss' );
 define( 'DSS_SQL_DEFAULT', 'SELECT DATE_FORMAT (comment_date, "%Y-%m-%d") AS Date, COUNT(*) AS Count, 3 AS Target FROM wp_comments  GROUP BY Date ORDER BY Date ASC' );
 define( 'DSS_NUMBER_OF_SQL_STATEMENTS_DEFAULT', '1' );
@@ -42,7 +42,7 @@ $chart_types_array=array("LineChart", "PieChart", "ScatterChart", "BubbleChart",
 dss_set_lang_file();
 add_action('admin_menu', 'dss_admin_actions');
 add_action('admin_init', 'dss_init');
-add_action('admin_head', 'dss_insert_header');
+add_action('admin_head-index.php', 'dss_insert_header');
 
 
 # init what we need
