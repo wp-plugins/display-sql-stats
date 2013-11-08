@@ -4,8 +4,9 @@ Plugin Name: Display SQL Stats
 Plugin URI: http://wordpress.org/plugins/display-sql-stats/
 Description: Displaying SQL result data as graphical chart on the dashboard with use of Google Chart Tools.
 Version: 0.6.4
-Author: Juergen Schulze
-Author URI: http://1manfactory.com/dss
+Author: J&uuml;rgen Schulze
+Author URI: http://1manfactory.com
+
 License: GNU GP
 */
 
