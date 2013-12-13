@@ -3,7 +3,7 @@ Contributors: 1manfactory
 Donate link: http://1manfactory.com/donate
 Tags: google chart, google chart tools, mysql, chart, charts, stats, statistic, statistics, graphic, graphical, dashboard, admin, sql, table, data, data mining, data display, data visualization, 
 Requires at least: 2.7
-Tested up to: 3.7.1
+Tested up to: 3.8
 Stable tag: 0.6.4
 
 == Description ==
