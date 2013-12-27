@@ -27,7 +27,7 @@ It's best to use the build in delete function of wordpress. That way all the sto
 == Changelog ==
 
 = 0.6.5 (2013/12/27) =
-* fix bug on antomatic cdetection of column types
+* fix bug on automatic detection of column types
 * better formatting of debug information
 
 = 0.6.4 (2013/11/08) =
