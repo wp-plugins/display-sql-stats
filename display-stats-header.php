@@ -20,7 +20,7 @@
 	include('display-stats-getdata.php');
 	
 	// set chart options
-	include('display-stats-set_chart.php');
+	include('display-stats-setchart.php');
 	
 ?>	
 
