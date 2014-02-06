@@ -115,14 +115,14 @@ global $chart_types_array;
 		
 		if ($dss_sql_string_array[$i]!="") {
 			// only show add button if the current statement is not empty
-			print '<a href="javascript:submitTheForm(\'add\','.$i.');"><img alt="'.__('Add a new SQL statement', 'dss').'" src="'.DSS_URL.'/img/plus-icon.png"></a>&nbsp;&nbsp;&nbsp;';
+			print '<a href="javascript:submitTheForm(\'add\','.$i.');"><img title="'.__('Add a new SQL statement', 'dss').'" alt="Add" src="'.DSS_URL.'/img/plus-icon.png"></a>&nbsp;&nbsp;&nbsp;';
 		}
 
 		//if (count($dss_sql_string_array)>1  && $dss_sql_string_array[$i]!="") {
 		if (count($dss_sql_string_array)>1 ) {
 			// only show minus button if more than one statement exists and current is not empty
 			if (isset($dss_action) && $dss_action=="add") $helpaction='remove'; else $helpaction='delete';
-			print '<a href="javascript:submitTheForm(\''.$helpaction.'\','.$i.');"><img alt="'.__('Delete this stament', 'dss').'" src="'.DSS_URL.'/img/minus-icon.png"></a>';
+			print '<a href="javascript:submitTheForm(\''.$helpaction.'\','.$i.');"><img title="'.__('Delete this SQL stament', 'dss').'" alt="Delete" src="'.DSS_URL.'/img/minus-icon.png"></a>';
 		}
 	
 	print '</td>

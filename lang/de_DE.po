@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Display SQL Stats\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-02-06 12:01+0100\n"
-"PO-Revision-Date: 2014-02-06 12:04+0100\n"
+"POT-Creation-Date: 2014-02-06 19:09+0100\n"
+"PO-Revision-Date: 2014-02-06 19:09+0100\n"
 "Last-Translator: Juergen Schulze <1manfactory@gmail.com>\n"
 "Language-Team: Juergen Schulze <1manfactory@gmail.com>\n"
 "Language: de_DE\n"
@@ -56,7 +56,8 @@ msgid "Add a new SQL statement"
 msgstr "Neues SQL Statement hinzufügen"
 
 #: ../display-stats-admin.php:125
-msgid "Delete this stament"
+#, fuzzy
+msgid "Delete this SQL stament"
 msgstr "Dieses SQL Statement löschen"
 
 #: ../display-stats-admin.php:138
