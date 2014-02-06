@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Display SQL Stats\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-09-15 10:16+0100\n"
-"PO-Revision-Date: 2013-09-15 10:16+0100\n"
+"POT-Creation-Date: 2014-02-06 12:01+0100\n"
+"PO-Revision-Date: 2014-02-06 12:04+0100\n"
 "Last-Translator: Juergen Schulze <1manfactory@gmail.com>\n"
 "Language-Team: Juergen Schulze <1manfactory@gmail.com>\n"
 "Language: de_DE\n"
@@ -19,43 +19,67 @@ msgstr ""
 msgid "You do not have sufficient permissions to access this page."
 msgstr "Sie haben nicht ausreichend Rechte, um auf diese Seite zuzugreifen."
 
-#: ../display-stats-admin.php:33
+#: ../display-stats-admin.php:42
+msgid "Empty statement removed"
+msgstr "Leeres SQL Statement wurde entfernt"
+
+#: ../display-stats-admin.php:45
+msgid "Added new empty statement"
+msgstr "Neues leeres SQL Statement hinzugefügt"
+
+#: ../display-stats-admin.php:54
+msgid "Statement deleted"
+msgstr "SQL Statement gelöscht"
+
+#: ../display-stats-admin.php:59
+msgid " and stored to notepad"
+msgstr " und im Notizblock gepeichert"
+
+#: ../display-stats-admin.php:83
 msgid "Enter your SQL statement(s) and give it/them a title."
 msgstr "SQL Statement(s) eingeben und mit Titel(n) versehen."
 
-#: ../display-stats-admin.php:40
+#: ../display-stats-admin.php:90
 msgid "Title: "
 msgstr "Titel:"
 
-#: ../display-stats-admin.php:61
+#: ../display-stats-admin.php:111
 msgid "On"
 msgstr "An"
 
-#: ../display-stats-admin.php:62
+#: ../display-stats-admin.php:112
 msgid "Off"
 msgstr "Aus"
 
-#: ../display-stats-admin.php:72
+#: ../display-stats-admin.php:118
+msgid "Add a new SQL statement"
+msgstr "Neues SQL Statement hinzufügen"
+
+#: ../display-stats-admin.php:125
+msgid "Delete this stament"
+msgstr "Dieses SQL Statement löschen"
+
+#: ../display-stats-admin.php:138
 msgid "Show debug information in dashboard"
 msgstr "Debug Information in Dashboard anzeigen"
 
-#: ../display-stats-admin.php:74
-msgid "Number of SQL Statements: "
-msgstr "Anzahl SQL Statements"
+#: ../display-stats-admin.php:140
+msgid "Store deleted statements in notepad"
+msgstr "Gelöschte SQL Statements im Notizblock speichern"
 
-#: ../display-stats-admin.php:76
+#: ../display-stats-admin.php:144
 msgid "Notepad"
 msgstr "Notizblock"
 
-#: ../display-stats-admin.php:87
+#: ../display-stats-admin.php:154
 msgid "Save Changes"
 msgstr "Änderungen speichern"
 
-#: ../display-stats-getdata.php:17
+#: ../display-stats-getdata.php:19
 msgid "No results on: "
 msgstr "Kein Ergebnis für"
 
-#: ../display-stats.php:38
+#: ../display-stats.php:36
 msgid ""
 "Store whatever information you like here.\n"
 "Or try this statement:\n"
@@ -69,6 +93,13 @@ msgstr ""
 #: ../display-stats.php:101
 msgid "SQL Error: "
 msgstr "SQL Fehler:"
+
+#: ../display-stats.php:147
+msgid "Settings"
+msgstr "Einstellungen"
+
+#~ msgid "Number of SQL Statements: "
+#~ msgstr "Anzahl SQL Statements"
 
 #, fuzzy
 #~ msgid ""
