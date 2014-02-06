@@ -3,7 +3,7 @@
 Plugin Name: Display SQL Stats
 Plugin URI: http://wordpress.org/plugins/display-sql-stats/
 Description: Displaying SQL result data as graphical chart on the dashboard with use of Google Chart Tools.
-Version: 0.6.5
+Version: 0.7
 Author: J&uuml;rgen Schulze
 Author URI: http://1manfactory.com
 License: GNU GP
@@ -29,13 +29,12 @@ License: GNU GP
 
 // Version/Build of the plugin and some default values
 define( 'DSS_PLUGIN_NAME', 'Display SQL Stats' );
-define( 'DSS_CURRENT_VERSION', '0.6.4' );
-define( 'DSS_CURRENT_BUILD', '11' );
+define( 'DSS_CURRENT_VERSION', '0.7' );
+define( 'DSS_CURRENT_BUILD', '12' );
 define( 'DSS_AUTHOR_URI', 'http://1manfactory.com/dss' );
 define( 'DSS_SQL_DEFAULT', 'SELECT DATE_FORMAT (comment_date, "%Y-%m-%d") AS Date, COUNT(*) AS Count, 3 AS Target FROM wp_comments  GROUP BY Date ORDER BY Date ASC' );
-define( 'DSS_NUMBER_OF_SQL_STATEMENTS_DEFAULT', '1' );
-define( 'DSS_TITLE_DEFAULT', 'Comments' );
 define( 'DSS_NOTEPAD_DEFAULT', __("Store whatever information you like here.\nOr try this statement:\nSELECT DATE_FORMAT (comment_date, \"%Y-%m-%d\") AS Date, COUNT(*) AS Count, 3 AS Target FROM wp_comments  GROUP BY Date ORDER BY Date ASC", 'dss') );
+define( 'DSS_URL', plugin_dir_url( __FILE__) );
 
 $chart_types_array=array("LineChart", "PieChart", "ScatterChart", "BubbleChart", "BarChart");
 
@@ -47,13 +46,13 @@ add_action('admin_head-index.php', 'dss_insert_header');
 
 # init what we need
 function dss_init() {
-	register_setting( 'dss_option-group', 'dss_number_of_sql_statements');
 	register_setting( 'dss_option-group', 'dss_sql_string_array', 'dss_check_sql' );
 	register_setting( 'dss_option-group', 'dss_switch_array');
 	register_setting( 'dss_option-group', 'dss_title_array');
 	register_setting( 'dss_option-group', 'dss_type_array');
 	register_setting( 'dss_option-group', 'dss_notepad');
 	register_setting( 'dss_option-group', 'dss_debug');
+	register_setting( 'dss_option-group', 'dss_store_deleted');
 }
 	
 
@@ -69,13 +68,14 @@ function dss_plugin_deactivation() {
 register_uninstall_hook (__FILE__, 'dss_uninstall');
 function dss_uninstall() {
 	# delete all data stored by DS
-	delete_option('dss_number_of_sql_statements');
+	delete_option('dss_number_of_sql_statements');		//leftover from old plugin version, don't delete
 	delete_option('dss_sql_string_array');
 	delete_option('dss_switch_array');
 	delete_option('dss_title_array');
 	delete_option('dss_type_array');
 	delete_option('dss_notepad');
 	delete_option('dss_debug');
+	delete_option('dss_store_deleted');
 }
 
 
@@ -221,4 +221,5 @@ function dss_log($message) {
         }
     }
 }
+
 ?>
