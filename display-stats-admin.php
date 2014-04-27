@@ -24,6 +24,7 @@ global $chart_types_array;
 	$dss_switch_array=get_option("dss_switch_array");
 	$dss_sql_string_array=get_option("dss_sql_string_array");
 	$dss_debug=get_option("dss_debug");
+	$dss_roles_array=get_option("dss_roles_array");
 	$dss_store_deleted=get_option("dss_store_deleted", '1');
 	$dss_notepad=get_option("dss_notepad", DSS_NOTEPAD_DEFAULT);
 	
@@ -77,7 +78,7 @@ global $chart_types_array;
 
 	
 	print'
-		<input type="hidden" name="page_options" value="dss_sql_string_array, dss_type_array, dss_switch_array, dss_debug, dss_store_deleted, dss_title_array" />
+		<input type="hidden" name="page_options" value="dss_sql_string_array, dss_type_array, dss_switch_array, dss_debug, dss_roles_array, dss_store_deleted, dss_title_array" />
 		<table class="form-table">
 		<tr valign="top">
 		<th scope="row">'.__('Enter your SQL statement(s) and give it/them a title.', 'dss').'</th>
@@ -132,7 +133,37 @@ global $chart_types_array;
 			<br />
 			<br />
 		';
-	}
+	}?>
+	
+
+	<?php
+	/*
+	//print "->".$dss_roles;
+	print __('Minimum Role for Dashboard View', 'dss');
+	// default role
+	if ($dss_roles=="") $dss_roles="administrator";
+	
+	print '<select name="dss_roles">';
+	
+	wp_dropdown_roles( $dss_roles );
+	print '</select>
+	<br /><br />
+		<p></p>';
+	*/
+	
+	//print_r($dss_roles_array);
+	print __('Show on Dashboard for:', 'dss')."<br />";
+	if ( ! isset( $wp_roles ) ) $wp_roles = new WP_Roles();
+	//print_r($wp_roles);
+	$roles = $wp_roles->get_names();
+ 
+	foreach ($roles as $role_value => $role_name) {
+		print '<input name="dss_roles_array[]" type="checkbox" value="' . $role_value . '"';
+		if (in_array($role_value, $dss_roles_array)) print " checked";
+		print '>'.translate_user_role($role_name).'<br />';
+  	}	
+	print '<br /><br />
+		<p></p>';
 	
 	print
 		'<input type="checkbox" name="dss_debug" value="1" '.dss_checked($dss_debug, "1").'/> '.__('Show debug information in dashboard', 'dss').'

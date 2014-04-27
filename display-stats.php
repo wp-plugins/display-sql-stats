@@ -4,7 +4,7 @@ Plugin Name: Display SQL Stats
 Plugin URI: http://wordpress.org/plugins/display-sql-stats/
 Description: Displaying SQL result data as graphical chart on the dashboard with use of Google Chart Tools.
 Version: 0.7
-Author: JÃ¼rgen Schulze
+Author: Jürgen Schulze
 Author URI: http://1manfactory.com
 License: GNU GP
 */
@@ -38,6 +38,8 @@ define( 'DSS_URL', plugin_dir_url( __FILE__) );
 
 $chart_types_array=array("LineChart", "PieChart", "ScatterChart", "BubbleChart", "BarChart");
 
+require (ABSPATH . WPINC . '/pluggable.php');  // we need this for user role detection
+
 dss_set_lang_file();
 add_action('admin_menu', 'dss_admin_actions');
 add_action('admin_init', 'dss_init');
@@ -52,6 +54,7 @@ function dss_init() {
 	register_setting( 'dss_option-group', 'dss_type_array');
 	register_setting( 'dss_option-group', 'dss_notepad');
 	register_setting( 'dss_option-group', 'dss_debug');
+	register_setting( 'dss_option-group', 'dss_roles_array');
 	register_setting( 'dss_option-group', 'dss_store_deleted');
 }
 	
@@ -75,6 +78,7 @@ function dss_uninstall() {
 	delete_option('dss_type_array');
 	delete_option('dss_notepad');
 	delete_option('dss_debug');
+	delete_option('dss_roles_array');
 	delete_option('dss_store_deleted');
 }
 
@@ -121,16 +125,17 @@ function dss_dashboard_insert() {
 }
 
 /**
- * Dashboard Widget hinzufÃ¼gen
+ * Dashboard Widget hinzufügen
  */
 function dss_dashboard_setup() {
 	wp_add_dashboard_widget( 'dss_dashboard_insert', DSS_PLUGIN_NAME, 'dss_dashboard_insert' );
 }
 
 /**
- * Nutzen des Hook fÃ¼r Widget
+ * Nutzen des Hook für Widget wenn erlaubt
  */
-add_action('wp_dashboard_setup', 'dss_dashboard_setup');
+ // only show for allowed roles
+if (dss_allowed()) add_action('wp_dashboard_setup', 'dss_dashboard_setup');
 
 
 function dss_plugin_action_links($links, $file) {
@@ -160,7 +165,8 @@ function dss_checked($checkOption, $checkValue) {
 }
 
 function dss_insert_header() {
-	include('display-stats-header.php');
+	// only show for allowed roles
+	if (dss_allowed()) include('display-stats-header.php');
 }
 
 function dss_quote_the_strings(&$item, $key ) {
@@ -222,4 +228,16 @@ function dss_log($message) {
     }
 }
 
+function dss_allowed() {
+	global $current_user;
+    get_currentuserinfo();
+	//print_r($current_user->roles);
+	$dss_roles_array=get_option("dss_roles_array");
+	//print_r($dss_roles_array);
+	$allowed=false;
+	foreach ($current_user->roles as $role_to_check) {
+		if (in_array($role_to_check, $dss_roles_array)) $allowed=true;
+	}
+	return $allowed;
+}
 ?>
