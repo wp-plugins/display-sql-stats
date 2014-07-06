@@ -3,13 +3,13 @@
 Plugin Name: Display SQL Stats
 Plugin URI: http://wordpress.org/plugins/display-sql-stats/
 Description: Displaying SQL result data as graphical chart on you blog (shortcodes) or your dashboard with use of Google Chart Tools.
-Version: 0.8.2
+Version: 0.9
 Author: Jürgen Schulze
 Author URI: http://1manfactory.com
 License: GNU GP
 */
 
-/*  Copyright 2013 Juergen Schulze, 1manfactory.com (email : 1manfactory@gmail.com)
+/*  Copyright 2013, 2014 Juergen Schulze, 1manfactory.com (email : 1manfactory@gmail.com)
 
     This program is free software; you can redistribute it and/or modify
     it under the terms of the GNU General Public License as published by
@@ -29,8 +29,8 @@ License: GNU GP
 
 // Version/Build of the plugin and some default values
 define( 'DSS_PLUGIN_NAME', 'Display SQL Stats' );
-define( 'DSS_CURRENT_VERSION', '0.8.1' );
-define( 'DSS_CURRENT_BUILD', '14' );
+define( 'DSS_CURRENT_VERSION', '0.9' );
+define( 'DSS_CURRENT_BUILD', '15' );
 define( 'DSS_AUTHOR_URI', 'http://1manfactory.com/dss' );
 define( 'DSS_SQL_DEFAULT', 'SELECT DATE_FORMAT (comment_date, "%Y-%m-%d") AS Date, COUNT(*) AS Count, 3 AS Target FROM wp_comments  GROUP BY Date ORDER BY Date ASC' );
 define( 'DSS_NOTEPAD_DEFAULT', __("Store whatever information you like here.\nOr try this statement:\nSELECT DATE_FORMAT (comment_date, \"%Y-%m-%d\") AS Date, COUNT(*) AS Count, 3 AS Target FROM wp_comments  GROUP BY Date ORDER BY Date ASC", 'dss') );
