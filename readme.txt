@@ -4,12 +4,12 @@ Donate link: http://1manfactory.com/donate
 Tags: google chart, google chart tools, mysql, chart, charts, stats, statistic, statistics, graphic, graphical, dashboard, admin, sql, table, data, data mining, data display, data visualization, 
 Requires at least: 2.7
 Tested up to: 3.9.1
-Stable tag: 0.9.0
+Stable tag: 0.9.1
 
 == Description ==
 ! ! !  S T I L L   B E T A  ! ! ! 
 
-Displaying SQL result data as graphical chart on you blog (shortcodes) or your dashboard with use of Google Chart Tools.
+Displaying SQL result data as graphical chart on you blogr (shortcodes) or your dashboard with use of Google Chart Tools.
 
 == Installation ==
 1. Upload plugin to the `/wp-content/plugins/` folder
@@ -26,7 +26,11 @@ It's best to use the build in delete function of wordpress. That way all the sto
 
 == Changelog ==
 
-= 0.9.0 (2014/07/08) =
+= 0.9.1 (2014/07/06) =
+* typo
+* handling of session error during activation
+
+= 0.9.0 (2014/07/06) =
 * Now with shortcodes to place your graphics everywhere (read FAQ section)
 
 = 0.8.2 (2014/05/17) =

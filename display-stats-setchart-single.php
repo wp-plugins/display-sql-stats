@@ -1,5 +1,4 @@
 <?php
-
 function dss_setchart($dssno) {
 	global $chart_types_array;
 	// get SQL statement data to be used
@@ -39,6 +38,3 @@ function dss_setchart($dssno) {
 	return $returnvalue;
 }
 ?>
-
-
-
