@@ -16,7 +16,7 @@ foreach ($dss_sql_string_array as $i=>$single_statement) {
 		$result = $wpdb->get_results($single_statement, ARRAY_A);
 		// Create the data table
 		if (!$result) {
-			print "\ndocument.all.chart_div".$i.".innerHTML = '<br>".__('No results on: ', 'dss').$dss_title_array[$i]."';";
+			print "\ndocument.all.chart_div".$i.".innerHTML = '<br>".__('No results on:', 'dss')."&nbsp;".$dss_title_array[$i]."';";
 		} else {
 			print "\n\n".'var data'.$i.' = new google.visualization.DataTable();'."\n";
 			$comma_separated=array();

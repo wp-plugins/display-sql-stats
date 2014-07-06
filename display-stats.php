@@ -2,7 +2,7 @@
 /*
 Plugin Name: Display SQL Stats
 Plugin URI: http://wordpress.org/plugins/display-sql-stats/
-Description: Displaying SQL result data as graphical chart on the dashboard with use of Google Chart Tools.
+Description: Displaying SQL result data as graphical chart on you blog (shortcodes) or your dashboard with use of Google Chart Tools.
 Version: 0.8.2
 Author: Jürgen Schulze
 Author URI: http://1manfactory.com
@@ -39,11 +39,15 @@ define( 'DSS_URL', plugin_dir_url( __FILE__) );
 $chart_types_array=array("LineChart", "PieChart", "ScatterChart", "BubbleChart", "BarChart");
 
 require (ABSPATH . WPINC . '/pluggable.php');  // we need this for user role detection
+include('display-stats-getdata-single.php');
+include('display-stats-setchart-single.php');
 
 dss_set_lang_file();
+
 add_action('admin_menu', 'dss_admin_actions');
 add_action('admin_init', 'dss_init');
-add_action('admin_head-index.php', 'dss_insert_header');
+add_action('admin_head-index.php', 'dss_write_dashboardstuff');
+add_action('wp_head', 'dss_insert_header');
 
 
 # init what we need
@@ -56,6 +60,7 @@ function dss_init() {
 	register_setting( 'dss_option-group', 'dss_debug');
 	register_setting( 'dss_option-group', 'dss_roles_array');
 	register_setting( 'dss_option-group', 'dss_store_deleted');
+	
 }
 	
 
@@ -165,8 +170,7 @@ function dss_checked($checkOption, $checkValue) {
 }
 
 function dss_insert_header() {
-	// only show for allowed roles
-	if (dss_allowed()) include('display-stats-header.php');
+	include('display-stats-header.php');
 }
 
 function dss_quote_the_strings(&$item, $key ) {
@@ -241,5 +245,50 @@ function dss_allowed() {
 		if (in_array($role_to_check, $dss_roles_array)) $allowed=true;
 	}
 	return $allowed;
+}
+
+// define shortcode
+function dss_shortcode_func( $atts ) {
+	$returnvalue="";
+	$a = shortcode_atts( array(
+        'no' => 0
+    ), $atts );
+	//$returnvalue="no ist ".$a["no"];
+	$dssno=$a["no"]-1;
+	$returnvalue.='<div id="chart_div'.($dssno).'"></div>'."\n";
+	$returnvalue.=dss_get_javascriptstuff($dssno);
+	return $returnvalue;
+	
+}
+add_shortcode( 'dsscode', 'dss_shortcode_func' );
+
+
+
+function dss_get_javascriptstuff($dssno) {
+	$returnvalue="";
+	$returnvalue.='<script type="text/javascript">'."\n";
+	$returnvalue.='google.setOnLoadCallback(drawChart'.$dssno.');'."\n";
+	$returnvalue.='function drawChart'.$dssno.'() {'."\n";
+	$returnvalue.=dss_getdata($dssno);
+	$returnvalue.=dss_setchart($dssno);
+	$returnvalue.='}'."\n";
+	$returnvalue.='</script>'."\n";
+	return $returnvalue;
+}
+
+function dss_write_javascriptstuff($dssno) {
+	dss_log ("dss_write_javascriptstuff ".$dssno);
+	print dss_get_javascriptstuff($dssno);
+}
+
+function dss_write_dashboardstuff() {
+	// get SQL statement data to be used
+	if (dss_allowed()) {
+		dss_insert_header();
+		$dss_sql_string_array=get_option("dss_sql_string_array");
+		foreach ($dss_sql_string_array as $key=>$value) {
+			dss_write_javascriptstuff($key);
+		}
+	}
 }
 ?>
