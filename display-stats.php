@@ -29,8 +29,8 @@ License: GNU GP
 
 // Version/Build of the plugin and some default values
 define( 'DSS_PLUGIN_NAME', 'Display SQL Stats' );
-define( 'DSS_CURRENT_VERSION', '0.9.2' );
-define( 'DSS_CURRENT_BUILD', '17' );
+define( 'DSS_CURRENT_VERSION', '0.9.3' );
+define( 'DSS_CURRENT_BUILD', '18' );
 define( 'DSS_AUTHOR_URI', 'http://1manfactory.com/dss' );
 define( 'DSS_SQL_DEFAULT', 'SELECT DATE_FORMAT (comment_date, "%Y-%m-%d") AS Date, COUNT(*) AS Count, 3 AS Target FROM wp_comments  GROUP BY Date ORDER BY Date ASC' );
 define( 'DSS_NOTEPAD_DEFAULT', __("Store whatever information you like here.\nOr try this statement:\nSELECT DATE_FORMAT (comment_date, \"%Y-%m-%d\") AS Date, COUNT(*) AS Count, 3 AS Target FROM wp_comments  GROUP BY Date ORDER BY Date ASC", 'dss') );
@@ -49,7 +49,7 @@ add_action('admin_init', 'dss_init');
 add_action('admin_head-index.php', 'dss_write_dashboardstuff');
 add_action('wp_head', 'dss_insert_header');
 
-
+	  
 # init what we need
 function dss_init() {
 	register_setting( 'dss_option-group', 'dss_sql_string_array', 'dss_check_sql' );
@@ -249,18 +249,23 @@ function dss_allowed() {
 
 // define shortcode
 function dss_shortcode_func( $atts ) {
+	global $dsswidth, $dssheight;
 	$returnvalue="";
 	$a = shortcode_atts( array(
-        'no' => 0, 'title' => ''
+        'no' => 0, 'title' => '', 'width' => '', 'height' => '', 'pagesize' => ''
     ), $atts );
 	//$returnvalue="no ist ".$a["no"];
 	$dssno=$a["no"]-1;
 	$dsstitle=$a["title"];
+	$dsswidth=$a["width"];
+	$dssheight=$a["height"];
+	$pagesize=$a["pagesize"];
+	
 	if (isset($dsstitle) && $dsstitle!="") {
 		$returnvalue.='<h4>'.$dsstitle.'</h4>';
 	}
 	$returnvalue.='<div id="chart_div'.($dssno).'"></div>'."\n";
-	$returnvalue.=dss_get_javascriptstuff($dssno);
+	$returnvalue.=dss_get_javascriptstuff($dssno, $dsswidth, $dssheight, $pagesize);
 	return $returnvalue;
 	
 }
@@ -268,13 +273,13 @@ add_shortcode( 'dsscode', 'dss_shortcode_func' );
 
 
 
-function dss_get_javascriptstuff($dssno) {
+function dss_get_javascriptstuff($dssno, $dsswidth, $dssheight, $pagesize) {
 	$returnvalue="";
 	$returnvalue.='<script type="text/javascript">'."\n";
 	$returnvalue.='google.setOnLoadCallback(drawChart'.$dssno.');'."\n";
 	$returnvalue.='function drawChart'.$dssno.'() {'."\n";
 	$returnvalue.=dss_getdata($dssno);
-	$returnvalue.=dss_setchart($dssno);
+	$returnvalue.=dss_setchart($dssno, $dsswidth, $dssheight, $pagesize);
 	$returnvalue.='}'."\n";
 	$returnvalue.='</script>'."\n";
 	return $returnvalue;

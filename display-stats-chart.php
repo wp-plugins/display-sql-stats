@@ -1,9 +1,10 @@
-<?php 
+<?php
 dss_set_lang_file();
 if (!current_user_can('manage_options'))  {
 	wp_die( __('You do not have sufficient permissions to access this page.') );
 }
-
+global $current_user; # we need use logins ($current_user->user_login) for special sql
+get_currentuserinfo();
 $dss_sql_string_array=get_option("dss_sql_string_array");
 $dss_switch_array=get_option("dss_switch_array");
 $dss_title_array=get_option("dss_title_array");
@@ -11,6 +12,9 @@ $dss_title_array=get_option("dss_title_array");
 if (get_option("dss_debug")) {
 	global $wpdb;
 	foreach ($dss_sql_string_array as $key=>$single_statement) {
+		// replace #login# with current user login
+		$single_statement=str_replace ("#user_login#", $current_user->user_login, $single_statement);
+
 		if ($dss_switch_array[$key]=="on") {
 			print "SQL $key:<br />".$single_statement."<br /><br />\n";
 			$result = $wpdb->get_results($single_statement, ARRAY_N);

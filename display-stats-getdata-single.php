@@ -1,6 +1,8 @@
 <?php
 function dss_getdata($dssno) {
 	global $wpdb;
+	global $current_user; # we need use logins ($current_user->user_login) for special sql
+	get_currentuserinfo();
 		
 	// get SQL statement data to be used
 	$dss_sql_string_array=get_option("dss_sql_string_array");
@@ -14,9 +16,12 @@ function dss_getdata($dssno) {
 	$minval=array();
 	$maxval=array();
 
-	//$returnvalue.=print_r($dss_sql_string, true);
 	$returnvalue="";
 	
+	// replace #user_login# with current user login
+	$dss_sql_string=str_replace ("#user_login#", $current_user->user_login, $dss_sql_string);
+	#$returnvalue.=print_r($dss_sql_string, true);
+		
 	$returnvalue.="// SQL: ".$dssno."\n";
 	//print $dss_sql_string;
 	

@@ -4,7 +4,7 @@ Donate link: http://1manfactory.com/donate
 Tags: google chart, google chart tools, mysql, chart, charts, stats, statistic, statistics, graphic, graphical, dashboard, admin, sql, table, data, data mining, data display, data visualization, 
 Requires at least: 2.7
 Tested up to: 4.0.1
-Stable tag: 0.9.2
+Stable tag: 0.9.3
 
 == Description ==
 ! ! !  S T I L L   B E T A  ! ! ! 
@@ -25,6 +25,10 @@ Displaying SQL result data as graphical chart on your blog (shortcodes) or your 
 It's best to use the build in delete function of wordpress. That way all the stored data will be removed and no orphaned data will stay.
 
 == Changelog ==
+
+= 0.9.3 (2014/12/10) =
+* More settings for shortcode table (see faqs)
+* Added variable #user_login# to be replaced with user login name on the fly (see faqs)
 
 = 0.9.2 (2014/12/10) =
 * New chart type: Table (a pure, sortable, smart table)
@@ -92,8 +96,20 @@ It's best to use the build in delete function of wordpress. That way all the sto
 
 == Frequently Asked Questions ==
 
+= variable #user_login# = 
+Use SQL statements with #user_login# to be replaced by user login on the fly
+Eg. SELECT * FROM wp_users WHERE user_login='#user_login#;'
+Will only give one line whith the result of the current user login, where
+SELECT * FROM wp_users;
+will give you all lines
+
 = What about the shortcode? =
-[dsscode no=x title="My Title"] - where x is the number of your SQL statement, title is the title
+[dsscode no=x title="My Title" width="100%" height="400" pagesize="50"]
+x is the number of your SQL statement
+title is the title
+width, use percent values oder just figures which will be treated as picxel, leave empty for full width of 100%
+height="400", same as above
+pagesize="50": The number of rows in each page (only with charttype table)
 
 = Can I access other databases than wordpress database? =
 Yes, but you have the grant your user access (better only select rights) to the database. Than you can use "SELECT * FROM database.table;" as you are used to. Be careful this might cause security risks.

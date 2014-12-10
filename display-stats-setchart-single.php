@@ -1,5 +1,5 @@
 <?php
-function dss_setchart($dssno) {
+function dss_setchart($dssno, $dsswidth, $dssheight, $pagesize) {
 	global $chart_types_array;
 	// get SQL statement data to be used
 	
@@ -13,14 +13,18 @@ function dss_setchart($dssno) {
 	//print_r ($dss_type_array_to_use);
 	$returnvalue="";
 	
+	// pagesize only needed for chartype table
+	if (isset($pagesize) && $pagesize>0) $page='enable';
 		
 		// chart visible?
 		if ($dss_switch=="on") {
 			$returnvalue.= '	
 			var options'.$dssno.' = {\'title\':\''.$dss_title.'\',
 				\'is3D\':true,
-				\'width\':500,
-				\'height\':500';
+				\'page\':\''.$page.'\',
+				\'pageSize\':\''.$pagesize.'\',
+				\'width\':\''.$dsswidth.'\',
+				\'height\':\''.$dssheight.'\'';
 				// only set min/max values with barcharts
 				if ($chart_types_array[$dss_type]=="BarChart") $returnvalue.= ',
 				\'hAxis\': { maxValue: \''.$maxval[$i].'\', minValue: \''.$minval[$i].'\', format: \'0\'}
