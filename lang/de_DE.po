@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Display SQL Stats\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-07-06 12:46+0100\n"
-"PO-Revision-Date: 2014-07-06 12:46+0100\n"
+"POT-Creation-Date: 2014-12-10 11:29+0100\n"
+"PO-Revision-Date: 2014-12-10 11:29+0100\n"
 "Last-Translator: Juergen Schulze <1manfactory@gmail.com>\n"
 "Language-Team: Juergen Schulze <1manfactory@gmail.com>\n"
 "Language: de_DE\n"
@@ -15,9 +15,13 @@ msgstr ""
 "X-Generator: Poedit 1.5.7\n"
 "X-Poedit-SearchPath-0: ..\n"
 
-#: ../display-stats-admin.php:4 ../display-stats-chart.php:4
+#: ../display-stats-chart.php:4 ../display-stats-admin.php:4
 msgid "You do not have sufficient permissions to access this page."
 msgstr "Sie haben nicht ausreichend Rechte, um auf diese Seite zuzugreifen."
+
+#: ../display-stats-getdata-single.php:29 ../display-stats-getdata.php:19
+msgid "No results on:"
+msgstr "Kein Ergebnis für:"
 
 #: ../display-stats-admin.php:43
 msgid "Empty statement removed"
@@ -79,10 +83,6 @@ msgstr "Notizblock"
 #: ../display-stats-admin.php:185
 msgid "Save Changes"
 msgstr "Änderungen speichern"
-
-#: ../display-stats-getdata-single.php:29 ../display-stats-getdata.php:19
-msgid "No results on:"
-msgstr "Kein Ergebnis für:"
 
 #: ../display-stats.php:36
 msgid ""

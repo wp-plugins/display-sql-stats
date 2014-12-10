@@ -6,6 +6,7 @@ if (!current_user_can('manage_options'))  {
 
 $dss_sql_string_array=get_option("dss_sql_string_array");
 $dss_switch_array=get_option("dss_switch_array");
+$dss_title_array=get_option("dss_title_array");
 
 if (get_option("dss_debug")) {
 	global $wpdb;
@@ -30,7 +31,7 @@ if (get_option("dss_debug")) {
 
 $i=0;
 foreach ($dss_sql_string_array as $single_statement) {
-	print '<div id="chart_div'.$i.'"></div>'."\n";
+	print '<h4>'.$dss_title_array[$i].'</h4><div id="chart_div'.$i.'"></div>'."\n";
 	$i++;
 }
 ?>

@@ -89,6 +89,7 @@ global $chart_types_array;
 	
 	for ($i=0;$i<count($dss_sql_string_array);$i++) {
 		print "".($i+1).")&nbsp;".__('Title:', 'dss').'&nbsp;<input type="text" name="dss_title_array['.$i.']" value="'.$dss_title_array[$i].'" size="50">
+			Shortcode: [dsscode no='.($i+1).']
 			<br />
 			<table border="0"><tr>
 			<td><textarea type="text" name="dss_sql_string_array['.$i.']" cols="100" rows="5">'.$dss_sql_string_array[$i].'</textarea></td>

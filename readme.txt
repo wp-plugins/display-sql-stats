@@ -3,13 +3,13 @@ Contributors: 1manfactory
 Donate link: http://1manfactory.com/donate
 Tags: google chart, google chart tools, mysql, chart, charts, stats, statistic, statistics, graphic, graphical, dashboard, admin, sql, table, data, data mining, data display, data visualization, 
 Requires at least: 2.7
-Tested up to: 4.0
-Stable tag: 0.9.1
+Tested up to: 4.0.1
+Stable tag: 0.9.2
 
 == Description ==
 ! ! !  S T I L L   B E T A  ! ! ! 
 
-Displaying SQL result data as graphical chart on you blogr (shortcodes) or your dashboard with use of Google Chart Tools.
+Displaying SQL result data as graphical chart on your blog (shortcodes) or your dashboard with use of Google Chart Tools.
 
 == Installation ==
 1. Upload plugin to the `/wp-content/plugins/` folder
@@ -25,6 +25,10 @@ Displaying SQL result data as graphical chart on you blogr (shortcodes) or your 
 It's best to use the build in delete function of wordpress. That way all the stored data will be removed and no orphaned data will stay.
 
 == Changelog ==
+
+= 0.9.2 (2014/12/10) =
+* New chart type: Table (a pure, sortable, smart table)
+* added title to shortcode
 
 = 0.9.1 (2014/07/06) =
 * typo
@@ -89,7 +93,10 @@ It's best to use the build in delete function of wordpress. That way all the sto
 == Frequently Asked Questions ==
 
 = What about the shortcode? =
-[dsscode no=x] - where x is the number of you SQL statement
+[dsscode no=x title="My Title"] - where x is the number of your SQL statement, title is the title
+
+= Can I access other databases than wordpress database? =
+Yes, but you have the grant your user access (better only select rights) to the database. Than you can use "SELECT * FROM database.table;" as you are used to. Be careful this might cause security risks.
 
 = Where can I find more information on Google Charts? =
 

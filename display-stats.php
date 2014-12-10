@@ -3,7 +3,7 @@
 Plugin Name: Display SQL Stats
 Plugin URI: http://wordpress.org/plugins/display-sql-stats/
 Description: Displaying SQL result data as graphical chart on your blog (shortcodes) or your dashboard with use of Google Chart Tools.
-Version: 0.9.1
+Version: 0.9.2
 Author: Jürgen Schulze
 Author URI: http://1manfactory.com
 License: GNU GP
@@ -29,14 +29,14 @@ License: GNU GP
 
 // Version/Build of the plugin and some default values
 define( 'DSS_PLUGIN_NAME', 'Display SQL Stats' );
-define( 'DSS_CURRENT_VERSION', '0.9.1' );
-define( 'DSS_CURRENT_BUILD', '16' );
+define( 'DSS_CURRENT_VERSION', '0.9.2' );
+define( 'DSS_CURRENT_BUILD', '17' );
 define( 'DSS_AUTHOR_URI', 'http://1manfactory.com/dss' );
 define( 'DSS_SQL_DEFAULT', 'SELECT DATE_FORMAT (comment_date, "%Y-%m-%d") AS Date, COUNT(*) AS Count, 3 AS Target FROM wp_comments  GROUP BY Date ORDER BY Date ASC' );
 define( 'DSS_NOTEPAD_DEFAULT', __("Store whatever information you like here.\nOr try this statement:\nSELECT DATE_FORMAT (comment_date, \"%Y-%m-%d\") AS Date, COUNT(*) AS Count, 3 AS Target FROM wp_comments  GROUP BY Date ORDER BY Date ASC", 'dss') );
 define( 'DSS_URL', plugin_dir_url( __FILE__) );
 
-$chart_types_array=array("LineChart", "PieChart", "ScatterChart", "BubbleChart", "BarChart");
+$chart_types_array=array("LineChart", "PieChart", "ScatterChart", "BubbleChart", "BarChart", "Table");
 
 require (ABSPATH . WPINC . '/pluggable.php');  // we need this for user role detection
 include('display-stats-getdata-single.php');
@@ -251,10 +251,14 @@ function dss_allowed() {
 function dss_shortcode_func( $atts ) {
 	$returnvalue="";
 	$a = shortcode_atts( array(
-        'no' => 0
+        'no' => 0, 'title' => ''
     ), $atts );
 	//$returnvalue="no ist ".$a["no"];
 	$dssno=$a["no"]-1;
+	$dsstitle=$a["title"];
+	if (isset($dsstitle) && $dsstitle!="") {
+		$returnvalue.='<h4>'.$dsstitle.'</h4>';
+	}
 	$returnvalue.='<div id="chart_div'.($dssno).'"></div>'."\n";
 	$returnvalue.=dss_get_javascriptstuff($dssno);
 	return $returnvalue;
