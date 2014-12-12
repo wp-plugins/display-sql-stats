@@ -26,6 +26,8 @@ global $chart_types_array;
 	$dss_debug=get_option("dss_debug");
 	$dss_roles_array=get_option("dss_roles_array");
 	$dss_store_deleted=get_option("dss_store_deleted", '1');
+	$dss_width_default=get_option("dss_width_default", DSS_WIDTH_DEFAULT_NEW);
+	$dss_height_default=get_option("dss_height_default", DSS_HEIGHT_DEFAULT_NEW);
 	$dss_notepad=get_option("dss_notepad", DSS_NOTEPAD_DEFAULT);
 	
 	if (isset($_POST["dss_action"]) && isset($_POST["dss_value"]) ) {
@@ -115,9 +117,9 @@ global $chart_types_array;
 		<br /><br />';
 		
 		
-		if ($dss_sql_string_array[$i]!="") {
-			// only show add button if the current statement is not empty
-			print '<a href="javascript:submitTheForm(\'add\','.$i.');"><img title="'.__('Add a new SQL statement', 'dss').'" alt="Add" src="'.DSS_URL.'/img/plus-icon.png"></a>&nbsp;&nbsp;&nbsp;';
+		if ($dss_sql_string_array[$i]!="" && $i==count($dss_sql_string_array)-1) {
+			// only show add button if the current statement is not empty and is the last one, because of shortcodes we can only add new at the end
+			print '<a href="javascript:submitTheForm(\'add\','.($i+1).');"><img title="'.__('Add a new SQL statement', 'dss').'" alt="Add" src="'.DSS_URL.'/img/plus-icon.png"></a>&nbsp;&nbsp;&nbsp;';
 		}
 
 		//if (count($dss_sql_string_array)>1  && $dss_sql_string_array[$i]!="") {
@@ -170,6 +172,10 @@ global $chart_types_array;
 		'<input type="checkbox" name="dss_debug" value="1" '.dss_checked($dss_debug, "1").'/> '.__('Show debug information in dashboard', 'dss').'
 		&nbsp;&nbsp;&nbsp;
 		<input type="checkbox" name="dss_store_deleted" value="1" '.dss_checked($dss_store_deleted, "1").'/> '.__('Store deleted statements in notepad', 'dss').'
+		<br />
+		<input type="text" name="dss_width_default" value="'.$dss_width_default.'"/> '.__('Default width of chart (e.g. 100; 50%; 20em)', 'dss').'
+		<br />
+		<input type="text" name="dss_height_default" value="'.$dss_height_default.'"/> '.__('Default height of chart', 'dss').'
 		<br />
 		<p></p>
 		<br />

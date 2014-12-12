@@ -3,7 +3,7 @@
 Plugin Name: Display SQL Stats
 Plugin URI: http://wordpress.org/plugins/display-sql-stats/
 Description: Displaying SQL result data as graphical chart on your blog (shortcodes) or your dashboard with use of Google Chart Tools.
-Version: 0.9.3
+Version: 0.9.4
 Author: Jürgen Schulze
 Author URI: http://1manfactory.com
 License: GNU GP
@@ -29,11 +29,14 @@ License: GNU GP
 
 // Version/Build of the plugin and some default values
 define( 'DSS_PLUGIN_NAME', 'Display SQL Stats' );
-define( 'DSS_CURRENT_VERSION', '0.9.3' );
-define( 'DSS_CURRENT_BUILD', '18' );
+define( 'DSS_CURRENT_VERSION', '0.9.4' );
+define( 'DSS_CURRENT_BUILD', '19' );
 define( 'DSS_AUTHOR_URI', 'http://1manfactory.com/dss' );
 define( 'DSS_SQL_DEFAULT', 'SELECT DATE_FORMAT (comment_date, "%Y-%m-%d") AS Date, COUNT(*) AS Count, 3 AS Target FROM wp_comments  GROUP BY Date ORDER BY Date ASC' );
 define( 'DSS_NOTEPAD_DEFAULT', __("Store whatever information you like here.\nOr try this statement:\nSELECT DATE_FORMAT (comment_date, \"%Y-%m-%d\") AS Date, COUNT(*) AS Count, 3 AS Target FROM wp_comments  GROUP BY Date ORDER BY Date ASC", 'dss') );
+define( 'DSS_WIDTH_DEFAULT_NEW', '500' );
+define( 'DSS_HEIGHT_DEFAULT_NEW', '500' );
+
 define( 'DSS_URL', plugin_dir_url( __FILE__) );
 
 $chart_types_array=array("LineChart", "PieChart", "ScatterChart", "BubbleChart", "BarChart", "Table");
@@ -60,7 +63,8 @@ function dss_init() {
 	register_setting( 'dss_option-group', 'dss_debug');
 	register_setting( 'dss_option-group', 'dss_roles_array');
 	register_setting( 'dss_option-group', 'dss_store_deleted');
-	
+	register_setting( 'dss_option-group', 'dss_width_default');
+	register_setting( 'dss_option-group', 'dss_height_default');
 }
 	
 
@@ -85,6 +89,8 @@ function dss_uninstall() {
 	delete_option('dss_debug');
 	delete_option('dss_roles_array');
 	delete_option('dss_store_deleted');
+	delete_option('dss_width_default');
+	delete_option('dss_height_default');
 }
 
 

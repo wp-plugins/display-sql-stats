@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Display SQL Stats\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-12-10 11:29+0100\n"
-"PO-Revision-Date: 2014-12-10 15:06+0100\n"
+"POT-Creation-Date: 2014-12-12 19:52+0100\n"
+"PO-Revision-Date: 2014-12-12 19:52+0100\n"
 "Last-Translator: Juergen Schulze <1manfactory@gmail.com>\n"
 "Language-Team: Juergen Schulze <1manfactory@gmail.com>\n"
 "Language: de_DE\n"
@@ -19,7 +19,7 @@ msgstr ""
 msgid "You do not have sufficient permissions to access this page."
 msgstr "Sie haben nicht ausreichend Rechte, um auf diese Seite zuzugreifen."
 
-#: ../display-stats-getdata-single.php:29 ../display-stats-getdata.php:19
+#: ../display-stats-getdata-single.php:34 ../display-stats-getdata.php:19
 msgid "No results on:"
 msgstr "Kein Ergebnis für:"
 
@@ -47,40 +47,39 @@ msgstr "SQL Statement(s) eingeben und mit Titel(n) versehen."
 msgid "Title:"
 msgstr "Titel:"
 
-#: ../display-stats-admin.php:112
+#: ../display-stats-admin.php:113
 msgid "On"
 msgstr "An"
 
-#: ../display-stats-admin.php:113
+#: ../display-stats-admin.php:114
 msgid "Off"
 msgstr "Aus"
 
-#: ../display-stats-admin.php:119
+#: ../display-stats-admin.php:120
 msgid "Add a new SQL statement"
 msgstr "Neues SQL Statement hinzufügen"
 
-#: ../display-stats-admin.php:126
-#, fuzzy
+#: ../display-stats-admin.php:127
 msgid "Delete this SQL stament"
 msgstr "Dieses SQL Statement löschen"
 
-#: ../display-stats-admin.php:155
+#: ../display-stats-admin.php:156
 msgid "Show on Dashboard for:"
 msgstr "In Dashboard anzeigen für:"
 
-#: ../display-stats-admin.php:169
+#: ../display-stats-admin.php:170
 msgid "Show debug information in dashboard"
 msgstr "Debug Information in Dashboard anzeigen"
 
-#: ../display-stats-admin.php:171
+#: ../display-stats-admin.php:172
 msgid "Store deleted statements in notepad"
 msgstr "Gelöschte SQL Statements im Notizblock speichern"
 
-#: ../display-stats-admin.php:175
+#: ../display-stats-admin.php:176
 msgid "Notepad"
 msgstr "Notizblock"
 
-#: ../display-stats-admin.php:185
+#: ../display-stats-admin.php:186
 msgid "Save Changes"
 msgstr "Änderungen speichern"
 
