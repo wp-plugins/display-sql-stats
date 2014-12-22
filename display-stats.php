@@ -3,7 +3,7 @@
 Plugin Name: Display SQL Stats
 Plugin URI: http://wordpress.org/plugins/display-sql-stats/
 Description: Displaying SQL result data as graphical chart on your blog (shortcodes) or your dashboard with use of Google Chart Tools.
-Version: 0.9.4
+Version: 0.9.4.1
 Author: Jürgen Schulze
 Author URI: http://1manfactory.com
 License: GNU GP
@@ -29,8 +29,8 @@ License: GNU GP
 
 // Version/Build of the plugin and some default values
 define( 'DSS_PLUGIN_NAME', 'Display SQL Stats' );
-define( 'DSS_CURRENT_VERSION', '0.9.4' );
-define( 'DSS_CURRENT_BUILD', '19' );
+define( 'DSS_CURRENT_VERSION', '0.9.4.1' );
+define( 'DSS_CURRENT_BUILD', '20' );
 define( 'DSS_AUTHOR_URI', 'http://1manfactory.com/dss' );
 define( 'DSS_SQL_DEFAULT', 'SELECT DATE_FORMAT (comment_date, "%Y-%m-%d") AS Date, COUNT(*) AS Count, 3 AS Target FROM wp_comments  GROUP BY Date ORDER BY Date ASC' );
 define( 'DSS_NOTEPAD_DEFAULT', __("Store whatever information you like here.\nOr try this statement:\nSELECT DATE_FORMAT (comment_date, \"%Y-%m-%d\") AS Date, COUNT(*) AS Count, 3 AS Target FROM wp_comments  GROUP BY Date ORDER BY Date ASC", 'dss') );
@@ -279,7 +279,7 @@ add_shortcode( 'dsscode', 'dss_shortcode_func' );
 
 
 
-function dss_get_javascriptstuff($dssno, $dsswidth, $dssheight, $pagesize) {
+function dss_get_javascriptstuff($dssno, $dsswidth="", $dssheight="", $pagesize="") {
 	$returnvalue="";
 	$returnvalue.='<script type="text/javascript">'."\n";
 	$returnvalue.='google.setOnLoadCallback(drawChart'.$dssno.');'."\n";
