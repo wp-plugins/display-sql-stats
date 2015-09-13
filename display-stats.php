@@ -3,7 +3,7 @@
 Plugin Name: Display SQL Stats
 Plugin URI: http://wordpress.org/plugins/display-sql-stats/
 Description: Displaying SQL result data as graphical chart on your blog (shortcodes) or your dashboard with use of Google Chart Tools.
-Version: 0.9.4.1
+Version: 0.9.4.2
 Author: Jürgen Schulze
 Author URI: http://1manfactory.com
 License: GNU GP
@@ -29,8 +29,8 @@ License: GNU GP
 
 // Version/Build of the plugin and some default values
 define( 'DSS_PLUGIN_NAME', 'Display SQL Stats' );
-define( 'DSS_CURRENT_VERSION', '0.9.4.1' );
-define( 'DSS_CURRENT_BUILD', '20' );
+define( 'DSS_CURRENT_VERSION', '0.9.4.2' );
+define( 'DSS_CURRENT_BUILD', '21' );
 define( 'DSS_AUTHOR_URI', 'http://1manfactory.com/dss' );
 define( 'DSS_SQL_DEFAULT', 'SELECT DATE_FORMAT (comment_date, "%Y-%m-%d") AS Date, COUNT(*) AS Count, 3 AS Target FROM wp_comments  GROUP BY Date ORDER BY Date ASC' );
 define( 'DSS_NOTEPAD_DEFAULT', __("Store whatever information you like here.\nOr try this statement:\nSELECT DATE_FORMAT (comment_date, \"%Y-%m-%d\") AS Date, COUNT(*) AS Count, 3 AS Target FROM wp_comments  GROUP BY Date ORDER BY Date ASC", 'dss') );
@@ -214,7 +214,7 @@ function dss_get_type ($value, $defaulttype="number") {
 }
 
 function dss_realmin ($array) {
-	if (is_numeric($array[0])) $mem=$array[0]; else $mem=0;
+	if (isset($array[0]) && is_numeric($array[0])) $mem=$array[0]; else $mem=0;
 	foreach ($array as $val) {
 		if ($val<$mem && is_numeric($val)) $mem=$val;
 	}
@@ -222,7 +222,8 @@ function dss_realmin ($array) {
 }
 
 function dss_realmax ($array) {
-	if (is_numeric($array[0])) $mem=$array[0];
+	$mem=0;
+	if (isset($array[0]) && is_numeric($array[0])) $mem=$array[0];
 	foreach ($array as $val) {
 		if ($val>$mem && is_numeric($val)) $mem=$val;
 	}

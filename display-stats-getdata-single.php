@@ -33,10 +33,11 @@ function dss_getdata($dssno) {
 		if (!$result) {
 			$returnvalue.="\ndocument.all.chart_div".$dssno.".innerHTML = '<br>".__('No results on:', 'dss')."&nbsp;".$dss_title."';";
 		} else {
+			$i="";
 			$returnvalue.="\n\n".'var data'.$dssno.' = new google.visualization.DataTable();'."\n";
 			$comma_separated=array();
 			dss_log('$i:'.$i);
-			dss_log('$result:'.$result);
+			dss_log('$result:'.var_export($result, true));
 			$minval[$i] = min( array_map("dss_realmin", $result) );
 			$maxval[$i] = max( array_map("dss_realmax", $result) );
 

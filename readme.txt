@@ -3,8 +3,8 @@ Contributors: 1manfactory
 Donate link: http://1manfactory.com/donate
 Tags: google chart, google chart tools, mysql, chart, charts, stats, statistic, statistics, graphic, graphical, dashboard, admin, sql, table, data, data mining, data display, data visualization, 
 Requires at least: 2.7
-Tested up to: 4.1
-Stable tag: 0.9.4.1
+Tested up to: 4.3
+Stable tag: 0.9.4.2
 
 == Description ==
 ! ! !  S T I L L   B E T A  ! ! ! 
@@ -25,6 +25,10 @@ Displaying SQL result data as graphical chart on your blog (shortcodes) or your 
 It's best to use the build in delete function of wordpress. That way all the stored data will be removed and no orphaned data will stay.
 
 == Changelog ==
+
+= 0.9.4.2(2015/09/13) =
+* tested von WP 4.3
+* remove more unnecessary warning messages
 
 = 0.9.4.1(2014/12/22) =
 * tested von WP 4.1

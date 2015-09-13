@@ -18,7 +18,7 @@ function dss_setchart($dssno, $dsswidth, $dssheight, $pagesize) {
 	if ($dssheight=="") $dssheight=$dss_height_default;
 	
 	// pagesize only needed for chartype table
-	if (isset($pagesize) && $pagesize>0) $page='enable';
+	if (isset($pagesize) && $pagesize>0) $page='enable'; else $page="";
 		
 		// chart visible?
 		if ($dss_switch=="on") {
